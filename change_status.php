@@ -5,7 +5,7 @@ $jsonArray = json_decode($json, true);
 
 $todo_name = $_POST['todo_name'];
 
-unset($jsonArray[$todo_name]);
+$jsonArray[$todo_name]['completed'] = !$jsonArray[$todo_name]['completed'];
 
 file_put_contents('todo.json', json_encode($jsonArray, JSON_PRETTY_PRINT));
 

@@ -23,20 +23,22 @@ if (file_exists('todo.json')) {
         <input type="text" name="todo_name" placeholder="Enter your todo">
         <button>New Todo</button>
     </form>
-</body>
-<?php foreach ($todos as $todoName => $todo) : ?>
-    <div style="margin-bottom: 10px">
-        <!-- <form action="change_status.php" method="post">
-            <input type="hidden" name="todo_name" value="<?php echo $todoName ?>">
-            <input type="checkbox" <?php echo $todo['completed'] ? 'checked' : '' ?>>
-        </form> -->
-        <?php echo $todoName ?>
-        <form style="display: inline-block" action="delete.php" method="post">
-            <input type="hidden" name="todo_name" value="<?php echo $todoName ?>">
-            <button>delete</button>
-        </form>
-    </div>
+    <?php foreach ($todos as $todoName => $todo) : ?>
+        <div style="margin-bottom: 10px">
+            <form style="display: inline-block" action="change_status.php" method="post">
+                <input type="hidden" name="todo_name" value="<?php echo $todoName ?>">
+                <input type="checkbox" <?php echo $todo['completed'] ? 'checked' : '' ?>>
+            </form>
+            <?php echo $todoName ?>
+            <form style="display: inline-block" action="delete.php" method="post">
+                <input type="hidden" name="todo_name" value="<?php echo $todoName ?>">
+                <button>delete</button>
+            </form>
+        </div>
 
-<?php endforeach; ?>
+    <?php endforeach; ?>
+
+    <script src="script.js"></script>
+</body>
 
 </html>
